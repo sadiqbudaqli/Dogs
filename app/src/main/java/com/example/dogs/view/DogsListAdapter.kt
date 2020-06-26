@@ -3,6 +3,8 @@ package com.example.dogs.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +35,14 @@ class DogsListAdapter(val dogsList: ArrayList<DogBreed>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.view.dog = dogsList[position]
         holder.view.listener = this
+
+
+//        val cardView: CardView = view.findViewById(R.id.cardView)
+        // TWO LINES BELOW CREATE A RECYCLERVIEW ANIMATION
+
+        val cardView: CardView = holder.view.cardView
+        holder.view.cardView.animation = AnimationUtils.loadAnimation(holder.view.cardView.context, R.anim.fade_transition_animation)
+
     }
 
     override fun onDogClicked(v: View) {
